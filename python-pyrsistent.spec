@@ -4,7 +4,7 @@
 Summary:        Persistent/Functional/Immutable data structures
 Name:           python-%{srcname}
 Version:        0.14.2
-Release:        3%{?dist}
+Release:        4%{?dist}
 License:        MIT
 Source0:        https://files.pythonhosted.org/packages/source/p/%{mod_name}/%{mod_name}-%{version}.tar.gz
 URL:            http://github.com/tobgu/pyrsistent/
@@ -75,6 +75,9 @@ Python 3 version.
 
 
 %changelog
+* Tue Jun 19 2018 Miro Hrončok <mhroncok@redhat.com> - 0.14.2-4
+- Rebuilt for Python 3.7
+
 * Mon Apr 16 2018 Itamar Reis Peixoto <itamar@ispbrasil.com.br> - 0.14.2-3
 - add missing dist-tag
 
