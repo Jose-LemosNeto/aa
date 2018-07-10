@@ -18,6 +18,7 @@ immutable.
 %package -n python2-%{srcname}
 Summary: Persistent/Functional/Immutable data structures
 %{?python_provide:%python_provide python2-%{pkg_name}}
+BuildRequires:  gcc
 BuildRequires: python2-devel
 BuildRequires: python2-six
 
