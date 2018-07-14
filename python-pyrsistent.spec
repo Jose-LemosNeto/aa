@@ -4,7 +4,7 @@
 Summary:        Persistent/Functional/Immutable data structures
 Name:           python-%{srcname}
 Version:        0.14.2
-Release:        4%{?dist}
+Release:        5%{?dist}
 License:        MIT
 Source0:        https://files.pythonhosted.org/packages/source/p/%{mod_name}/%{mod_name}-%{version}.tar.gz
 URL:            http://github.com/tobgu/pyrsistent/
@@ -76,6 +76,9 @@ Python 3 version.
 
 
 %changelog
+* Sat Jul 14 2018 Fedora Release Engineering <releng@fedoraproject.org> - 0.14.2-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
 * Tue Jun 19 2018 Miro Hrončok <mhroncok@redhat.com> - 0.14.2-4
 - Rebuilt for Python 3.7
 
