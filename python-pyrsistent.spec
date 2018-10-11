@@ -20,6 +20,7 @@ Summary: Persistent/Functional/Immutable data structures
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{mod_name}}
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  python%{python3_pkgversion}-six
+BuildRequires:  gcc
 
 %description -n python%{python3_pkgversion}-%{srcname}
 Pyrsistent is a number of persistent collections (by some referred to
