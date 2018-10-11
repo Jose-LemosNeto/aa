@@ -4,7 +4,7 @@
 Summary:        Persistent/Functional/Immutable data structures
 Name:           python-%{srcname}
 Version:        0.14.2
-Release:        5%{?dist}
+Release:        6%{?dist}
 License:        MIT
 Source0:        https://files.pythonhosted.org/packages/source/p/%{mod_name}/%{mod_name}-%{version}.tar.gz
 URL:            http://github.com/tobgu/pyrsistent/
@@ -14,20 +14,6 @@ Pyrsistent is a number of persistent collections (by some referred to
 as functional data structures). Persistent in the sense that they are
 immutable.
 
-
-%package -n python2-%{srcname}
-Summary: Persistent/Functional/Immutable data structures
-%{?python_provide:%python_provide python2-%{pkg_name}}
-BuildRequires:  gcc
-BuildRequires: python2-devel
-BuildRequires: python2-six
-
-%description -n python2-%{srcname}
-Pyrsistent is a number of persistent collections (by some referred to
-as functional data structures). Persistent in the sense that they are
-immutable.
-
-Python 2 version.
 
 %package -n python%{python3_pkgversion}-%{srcname}
 Summary: Persistent/Functional/Immutable data structures
@@ -40,30 +26,17 @@ Pyrsistent is a number of persistent collections (by some referred to
 as functional data structures). Persistent in the sense that they are
 immutable.
 
-Python 3 version.
-
 %prep
 %setup -q -n %{srcname}-%{version}
 
 %build
-%py2_build
 %py3_build
 
 %install
-%py2_install
 %py3_install
 
 %check
-#% {__python2} setup.py test
 #% {__python3} setup.py test
-
-%files  -n python2-%{srcname}
-%license LICENCE.mit
-%doc README.rst
-%{python2_sitearch}/%{srcname}
-%{python2_sitearch}/_%{srcname}_version.py*
-%{python2_sitearch}/p*.so
-%{python2_sitearch}/%{srcname}-%{version}-py?.?.egg-info/*
 
 %files -n python%{python3_pkgversion}-%{srcname}
 %license LICENCE.mit
@@ -76,6 +49,10 @@ Python 3 version.
 
 
 %changelog
+* Thu Oct 11 2018 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl> - 0.14.2-6
+- Python2 binary package has been removed
+  See https://fedoraproject.org/wiki/Changes/Mass_Python_2_Package_Removal
+
 * Sat Jul 14 2018 Fedora Release Engineering <releng@fedoraproject.org> - 0.14.2-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
