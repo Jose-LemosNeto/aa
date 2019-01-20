@@ -1,1 +1,5 @@
+/results_*
+/*.src.rpm
+
 /pyrsistent-0.14.2.tar.gz
+/pyrsistent-0.14.9.tar.gz

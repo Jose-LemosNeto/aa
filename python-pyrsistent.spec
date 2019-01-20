@@ -1,55 +1,81 @@
-%global srcname pyrsistent
-%global mod_name pyrsistent
+%global pypi_name pyrsistent
 
+%global common_description %{expand:
+Pyrsistent is a number of persistent collections (by some referred to as
+functional data structures). Persistent in the sense that they are
+immutable.
+
+All methods on a data structure that would normally mutate it instead
+return a new copy of the structure containing the requested updates. The
+original structure is left untouched.}
+
+%{?python_enable_dependency_generator}
+
+Name:           python-%{pypi_name}
 Summary:        Persistent/Functional/Immutable data structures
-Name:           python-%{srcname}
-Version:        0.14.2
-Release:        6%{?dist}
+Version:        0.14.9
+Release:        1%{?dist}
 License:        MIT
-Source0:        https://files.pythonhosted.org/packages/source/p/%{mod_name}/%{mod_name}-%{version}.tar.gz
+
 URL:            http://github.com/tobgu/pyrsistent/
+Source0:        %{pypi_source}
 
-%description
-Pyrsistent is a number of persistent collections (by some referred to
-as functional data structures). Persistent in the sense that they are
-immutable.
-
-
-%package -n python%{python3_pkgversion}-%{srcname}
-Summary: Persistent/Functional/Immutable data structures
-%{?python_provide:%python_provide python%{python3_pkgversion}-%{mod_name}}
-BuildRequires:  python%{python3_pkgversion}-devel
-BuildRequires:  python%{python3_pkgversion}-six
 BuildRequires:  gcc
+BuildRequires:  python3-devel
 
-%description -n python%{python3_pkgversion}-%{srcname}
-Pyrsistent is a number of persistent collections (by some referred to
-as functional data structures). Persistent in the sense that they are
-immutable.
+BuildRequires:  python3dist(hypothesis)
+BuildRequires:  python3dist(pytest)
+BuildRequires:  python3dist(pytest-runner)
+BuildRequires:  python3dist(setuptools)
+BuildRequires:  python3dist(six)
+
+%description %{common_description}
+
+
+%package -n     python3-%{pypi_name}
+Summary:        %{summary}
+
+%{?python_provide:%python_provide python3-%{pypi_name}}
+
+%description -n python3-%{pypi_name} %{common_description}
+
 
 %prep
-%setup -q -n %{srcname}-%{version}
+%autosetup -n %{pypi_name}-%{version}
+
+# Remove bundled egg-info
+rm -rf %{pypi_name}.egg-info
+
 
 %build
 %py3_build
 
+
 %install
 %py3_install
 
-%check
-#% {__python3} setup.py test
 
-%files -n python%{python3_pkgversion}-%{srcname}
-%license LICENCE.mit
+%check
+%{__python3} setup.py test
+
+
+%files -n python3-%{pypi_name}
 %doc README.rst
-%{python3_sitearch}/__pycache__/_%{srcname}_*.pyc
-%{python3_sitearch}/_%{srcname}_version.py
-%{python3_sitearch}/%{srcname}
-%{python3_sitearch}/%{srcname}-%{version}-py?.?.egg-info/*
-%{python3_sitearch}/pvectorc.cpython*.so
+%license LICENCE.mit
+
+%{python3_sitearch}/_pyrsistent_version.py
+%{python3_sitearch}/__pycache__/*
+
+%{python3_sitearch}/%{pypi_name}/
+%{python3_sitearch}/pvectorc.cpython-3?m-*.so
+%{python3_sitearch}/%{pypi_name}-%{version}-py?.?.egg-info
 
 
 %changelog
+* Mon Jan 14 2019 Fabio Valentini <decathorpe@gmail.com> - 0.14.9-1
+- Update to version 0.14.9.
+- Enable the test suite.
+
 * Thu Oct 11 2018 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl> - 0.14.2-6
 - Python2 binary package has been removed
   See https://fedoraproject.org/wiki/Changes/Mass_Python_2_Package_Removal
@@ -75,3 +101,4 @@ immutable.
 * Tue Sep 13 2016 Devrim Gündüz <devrim@gunduz.org> 0.11.13-1
 - Initial packaging for PostgreSQL YUM repository, to satisfy
   pgadmin4 dependency.
+
