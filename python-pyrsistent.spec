@@ -14,7 +14,7 @@ original structure is left untouched.}
 Name:           python-%{pypi_name}
 Summary:        Persistent/Functional/Immutable data structures
 Version:        0.14.9
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        MIT
 
 URL:            http://github.com/tobgu/pyrsistent/
@@ -72,6 +72,9 @@ rm -rf %{pypi_name}.egg-info
 
 
 %changelog
+* Sat Feb 02 2019 Fedora Release Engineering <releng@fedoraproject.org> - 0.14.9-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Mon Jan 14 2019 Fabio Valentini <decathorpe@gmail.com> - 0.14.9-1
 - Update to version 0.14.9.
 - Enable the test suite.
