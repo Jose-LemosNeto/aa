@@ -13,7 +13,7 @@ original structure is left untouched.}
 
 Name:           python-%{pypi_name}
 Summary:        Persistent/Functional/Immutable data structures
-Version:        0.14.11
+Version:        0.15.1
 Release:        1%{?dist}
 License:        MIT
 
@@ -72,6 +72,9 @@ rm -rf %{pypi_name}.egg-info
 
 
 %changelog
+* Fri Apr 26 2019 Fabio Valentini <decathorpe@gmail.com> - 0.15.1-1
+- Update to version 0.15.1.
+
 * Fri Feb 22 2019 Fabio Valentini <decathorpe@gmail.com> - 0.14.11-1
 - Update to version 0.14.11.
 
