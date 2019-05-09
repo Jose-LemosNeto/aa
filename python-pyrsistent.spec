@@ -67,7 +67,7 @@ rm -rf %{pypi_name}.egg-info
 %{python3_sitearch}/__pycache__/*
 
 %{python3_sitearch}/%{pypi_name}/
-%{python3_sitearch}/pvectorc.cpython-3?m-*.so
+%{python3_sitearch}/pvectorc.cpython-3?*.so
 %{python3_sitearch}/%{pypi_name}-%{version}-py?.?.egg-info
 
 
