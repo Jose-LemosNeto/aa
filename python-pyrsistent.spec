@@ -13,8 +13,8 @@ original structure is left untouched.}
 
 Name:           python-%{pypi_name}
 Summary:        Persistent/Functional/Immutable data structures
-Version:        0.15.4
-Release:        3%{?dist}
+Version:        0.15.5
+Release:        1%{?dist}
 License:        MIT
 
 URL:            http://github.com/tobgu/pyrsistent/
@@ -68,10 +68,13 @@ rm -rf %{pypi_name}.egg-info
 
 %{python3_sitearch}/%{pypi_name}/
 %{python3_sitearch}/pvectorc.cpython-3*.so
-%{python3_sitearch}/%{pypi_name}-%{version}-py?.?.egg-info/
+%{python3_sitearch}/%{pypi_name}-%{version}-py%{python3_version}.egg-info/
 
 
 %changelog
+* Thu Oct 31 2019 Fabio Valentini <decathorpe@gmail.com> - 0.15.5-1
+- Update to version 0.15.5.
+
 * Thu Oct 03 2019 Miro Hrončok <mhroncok@redhat.com> - 0.15.4-3
 - Rebuilt for Python 3.8.0rc1 (#1748018)
 
