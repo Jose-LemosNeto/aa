@@ -9,16 +9,17 @@ All methods on a data structure that would normally mutate it instead
 return a new copy of the structure containing the requested updates. The
 original structure is left untouched.}
 
-%{?python_enable_dependency_generator}
-
 Name:           python-%{pypi_name}
 Summary:        Persistent/Functional/Immutable data structures
-Version:        0.15.7
-Release:        2%{?dist}
+Version:        0.16.0
+Release:        1%{?dist}
 License:        MIT
 
 URL:            http://github.com/tobgu/pyrsistent/
 Source0:        %{pypi_source}
+
+# relax dependencies specified in setup.py
+Patch0:         00-relax-dependencies.patch
 
 BuildRequires:  gcc
 BuildRequires:  python3-devel
@@ -41,7 +42,7 @@ Summary:        %{summary}
 
 
 %prep
-%autosetup -n %{pypi_name}-%{version}
+%autosetup -n %{pypi_name}-%{version} -p1
 
 # Remove bundled egg-info
 rm -rf %{pypi_name}.egg-info
@@ -72,6 +73,9 @@ rm -rf %{pypi_name}.egg-info
 
 
 %changelog
+* Tue Apr 14 2020 Fabio Valentini <decathorpe@gmail.com> - 0.16.0-1
+- Update to version 0.16.0.
+
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.15.7-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
 
