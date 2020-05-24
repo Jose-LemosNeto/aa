@@ -12,7 +12,7 @@ original structure is left untouched.}
 Name:           python-%{pypi_name}
 Summary:        Persistent/Functional/Immutable data structures
 Version:        0.16.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        MIT
 
 URL:            http://github.com/tobgu/pyrsistent/
@@ -73,6 +73,9 @@ rm -rf %{pypi_name}.egg-info
 
 
 %changelog
+* Sun May 24 2020 Miro Hrončok <mhroncok@redhat.com> - 0.16.0-2
+- Rebuilt for Python 3.9
+
 * Tue Apr 14 2020 Fabio Valentini <decathorpe@gmail.com> - 0.16.0-1
 - Update to version 0.16.0.
 
